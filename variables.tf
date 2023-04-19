@@ -24,10 +24,3 @@ variable "vpc_name" {
   description = "Set VPC name without special characters"
   default = "name"
 }
-
-variable "Enable_dns_support" {
-  type        = bool
-  description = "Set true or false if you want dns support"
-  default     = false
-}
-
