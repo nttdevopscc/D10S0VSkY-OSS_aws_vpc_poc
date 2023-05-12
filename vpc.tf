@@ -1,9 +1,21 @@
 # Terraform Training VPC
 resource "aws_vpc" "vpc" {
+  provider             = aws.aws002
   cidr_block           = var.vpc_cidr
   instance_tenancy     = "default"
   enable_dns_hostnames = "true"
-  enable_classiclink   = "false"
+
+  tags = {
+    Name = var.vpc_name
+  }
+}
+
+# Terraform Training VPC
+resource "aws_vpc" "vpc01" {
+  provider             = aws.aws001
+  cidr_block           = var.vpc_cidr
+  instance_tenancy     = "default"
+  enable_dns_hostnames = "true"
 
   tags = {
     Name = var.vpc_name
@@ -12,6 +24,7 @@ resource "aws_vpc" "vpc" {
 
 # Terraform Training Subnets
 resource "aws_subnet" "public-1" {
+  provider                = aws.aws002
   vpc_id                  = aws_vpc.vpc.id
   cidr_block              = var.subnet_cidr["fe1"]
   map_public_ip_on_launch = "true"
@@ -23,6 +36,7 @@ resource "aws_subnet" "public-1" {
 }
 
 resource "aws_subnet" "public-2" {
+  provider                = aws.aws002
   vpc_id                  = aws_vpc.vpc.id
   cidr_block              = var.subnet_cidr["fe2"]
   map_public_ip_on_launch = "true"
@@ -34,6 +48,7 @@ resource "aws_subnet" "public-2" {
 }
 
 resource "aws_subnet" "private-1" {
+  provider                = aws.aws002
   vpc_id                  = aws_vpc.vpc.id
   cidr_block              = var.subnet_cidr["be1"]
   map_public_ip_on_launch = "false"
@@ -45,6 +60,7 @@ resource "aws_subnet" "private-1" {
 }
 
 resource "aws_subnet" "private-2" {
+  provider                = aws.aws002
   vpc_id                  = aws_vpc.vpc.id
   cidr_block              = var.subnet_cidr["be2"]
   map_public_ip_on_launch = "false"

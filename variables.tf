@@ -3,13 +3,13 @@ variable "region" {
 }
 
 variable "vpc_cidr" {
-  type = string
+  type        = string
   description = "The allowed block size is between a /28 netmask and /16 netmask"
-  default = "10.0.0.0/16"
+  default     = "10.0.0.0/16"
 }
 
 variable "subnet_cidr" {
-  type = map(string)
+  type        = map(string)
   description = "Don't change this without first changing vpc_cidr"
   default = {
     be1 = "10.0.0.0/24"
@@ -20,7 +20,12 @@ variable "subnet_cidr" {
 }
 
 variable "vpc_name" {
-  type    = string
+  type        = string
   description = "Set VPC name without special characters"
-  default = "name"
+  default     = "name"
+}
+
+variable "role_arn" {
+  type        = string
+  description = "Set role arn"
 }
