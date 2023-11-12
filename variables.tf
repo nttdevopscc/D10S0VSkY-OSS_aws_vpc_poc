@@ -10,6 +10,7 @@ variable "vpc_cidr" {
 variable "subnet_cidr" {
   type = map(string)
   description = "Don't change this without first changing vpc_cidr"
+  default = {}
 }
 
 variable "vpc_name" {
