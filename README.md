@@ -1,6 +1,8 @@
 # aws_vpc_poc
 Terraform AWS VPC |  Simple example for testing SLD 
 
+## Topology
+![VPC](https://docs.aws.amazon.com/es_es/vpc/latest/userguide/images/connectivity-overview.png)
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
